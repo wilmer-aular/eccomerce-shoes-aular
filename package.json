@@ -1,0 +1,31 @@
+{
+  "name": "ecommerce-shoes-aular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilmer-aular/ecommerce-shoes-aular.git"
+  },
+  "author": "Wilmer Aular",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wilmer-aular/ecommerce-shoes-aular/issues"
+  },
+  "homepage": "https://github.com/wilmer-aular/ecommerce-shoes-aular#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-promise-router": "^3.0.3",
+    "lossless-json": "^1.0.4",
+    "moment": "^2.27.0",
+    "socket.io": "^4.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
