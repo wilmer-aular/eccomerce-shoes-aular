@@ -6,7 +6,6 @@ const fsAsync = fs.promises;
 
 const error = { error: 'product not found' }
 class Cart extends Product {
-    products = new Product('products');
     constructor(fileName) {
         super(fileName);
         this.filName = fileName;
@@ -80,7 +79,8 @@ class Cart extends Product {
         return { success: true, delete: id };
     }
     async getProducts(ids) {
-        const products = await this.products.find();
+        const newProduct = new Product('products');
+        const products = await newProduct.find();
         return products.filter(i => ids.includes(i.id));
     }
 }
