@@ -1,0 +1,54 @@
+<div style="margin-top: 50px;">
+    <h1 class="text-primary text-center">Centro de mensajes</h1>
+    <div style="margin: 0px auto; width: 700px; background-color: #f5f1f1; padding: 40px">
+        <h2 class="text-primary">Ingrese los datos</h2>
+        <form action="/api/products/{{product.id}}" method="POST" id="formProducts">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Nombre"
+                        value="{{product.name}}" required>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Codigo</label>
+                        <input value="{{product.code}}" type="string" name="code" class="form-control" id="code"
+                            placeholder="Codigo" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Precio</label>
+                        <input value="{{product.price}}" type="number" name="price" class="form-control" id="price"
+                            placeholder="Precio" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Cantidad</label>
+                        <input value="{{product.stock}}" type="number" name="stock" class="form-control" id="stock"
+                            placeholder="Cantidad" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Descripción</label>
+                        <input value="{{product.description}}" type="text" name="description" class="form-control"
+                            id="description" placeholder="Descripcón" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Foto</label>
+                        <input value="{{product.photo}}" type="url" name="photo" class="form-control" id="photo"
+                            placeholder="ULR">
+                    </div>
+                </div>
+            </div>
+            <input value="page" type="text" name="page" class="form-control" id="page" hidden>
+
+            <button type="submit" class="btn btn-primary" id="sendProducts">Enviar</button>
+        </form>
+    </div>
+</div>
