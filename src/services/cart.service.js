@@ -17,11 +17,11 @@ class Cart extends Product {
             if (data.error) return data;
             if (!id) {
                 return data.map(i => {
-                    i.products = i.products ? i.products?.map(setProduct) : [];
+                    i.products = i.products && i.products.length ? i.products.map(setProduct) : [];
                     return i;
                 })
             }
-            return { ...data, products: data.products ? data.products?.map(setProduct) : [] };
+            return { ...data, products: data.products && data.products ? data.products.map(setProduct) : [] };
         } catch (err) {
             throw err
         }
