@@ -1,10 +1,10 @@
-const LosslessJSON = require('lossless-json');
+import LosslessJSON from 'lossless-json';
 
-const majorkey = (array) => {
+export const majorkey = (array) => {
   const getMax = (a, b) => Math.max(a, b);
   return array.reduce(getMax);
 };
-const createId = (array) => {
+export const createId = (array) => {
   if (array.length) {
     const majorId = (majorkey(array.map((i) => i.id))) + 1;
     return majorId;
@@ -12,7 +12,7 @@ const createId = (array) => {
   return 1;
 };
 
-const setProduct = (i) => {
+export const setProduct = (i) => {
   const data = {
     ...i,
     id: JSON.parse(i.id),
@@ -22,12 +22,12 @@ const setProduct = (i) => {
   return data;
 };
 
-const fromStringList = (value) => {
+export const fromStringList = (value) => {
   if (!value) return [];
   const valueList = '[' + value + ']';
   return LosslessJSON.parse(valueList).map(setProduct);
 };
-const fromListString = (v) => {
+export const fromListString = (v) => {
   if (v.length) {
     const transformer = LosslessJSON.stringify(v);
     return transformer.substring(1, transformer.length - 1);
@@ -35,7 +35,7 @@ const fromListString = (v) => {
   return '';
 };
 
-const routers = {
+export const routers = {
   views: [
     { metod: 'get', uri: '/new_product' },
     { metod: 'get', uri: '/edit_product/id' },
@@ -95,5 +95,3 @@ const routers = {
     ]
   }
 };
-
-module.exports = { fromStringList, createId, fromListString, setProduct, routers }

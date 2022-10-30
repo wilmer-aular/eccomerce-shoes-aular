@@ -1,4 +1,4 @@
-const Cart = require('../services/cart.service.js');
+import Cart from '../services/cart.service.js';
 const cart = new Cart('carts');
 
 const cartController = {
@@ -27,4 +27,4 @@ const cartController = {
     },
 }
 
-module.exports = cartController;
+export default cartController;

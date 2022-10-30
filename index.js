@@ -1,18 +1,23 @@
-const express = require("express");
-const router = require("./src/util/util")
-const { Server: HTTPServer } = require("http");
-const { Server: SocketServer } = require("socket.io");
-const handlebars = require('express-handlebars');
 
-var path = require("path");
-global.appRoot = path.resolve(__dirname);
+
+import express from 'express';
+import { Server as HTTPServer } from 'http';
+import { Server as SocketServer } from 'socket.io';
+import handlebars from 'express-handlebars';
+
+import { routers } from "./src/util/util.js";
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const httpServer = new HTTPServer(app);
 const io = new SocketServer(httpServer);
 
 app.disable('x-powered-by')
-const routerFacade = require("./src/routers/fecade.js");
+import routerFacade from "./src/routers/fecade.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,7 +28,9 @@ app.engine("hbs", handlebars.engine({
   defaultLayout: "index"
 }))
 
-app.set("view engine", ".hbs");
+app.set("view engine", "ejs");
+app.set("view engine", "pug");
+app.set("view engine", "hbs");
 
 app.use(express.static("views"));
 
@@ -42,7 +49,7 @@ app.use((req, res, next) => {
 app.use("", routerFacade);
 
 app.use(function (req, res) {
-  res.status(404).json(router);
+  res.status(404).json(routers);
 });
 
 

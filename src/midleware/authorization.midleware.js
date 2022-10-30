@@ -1,12 +1,12 @@
 
 
-const verifyAuth = async (req, res, next) => {
+export const verifyAuth = async (req, res, next) => {
     //AQUI VA LA LOGICA DEL LOGIN
     return next();
 };
 
 
-const verifyUser = async (req, res, next) => {
+export const verifyUser = async (req, res, next) => {
     //AQUI SE VALIDA EL ROL DEL USUARIO PARA SABER SI TIENE PRIVILEGIOS
     const admin = true;
     if (!admin) {
@@ -15,5 +15,3 @@ const verifyUser = async (req, res, next) => {
     }
     return next();
 };
-
-module.exports = { verifyUser, verifyAuth };

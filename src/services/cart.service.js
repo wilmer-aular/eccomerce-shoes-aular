@@ -1,6 +1,6 @@
-const Product = require('./product.service');
-const fs = require('fs');
-const { setProduct, fromListString, createId } = require('../util/util.js')
+import Product from './product.service.js';
+import fs from 'fs';
+import { setProduct } from '../util/util.js';
 
 const fsAsync = fs.promises;
 
@@ -85,4 +85,4 @@ class Cart extends Product {
     }
 }
 
-module.exports = Cart
+export default Cart;

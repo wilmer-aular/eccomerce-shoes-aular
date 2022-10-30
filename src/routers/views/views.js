@@ -1,10 +1,10 @@
-let router = require("express-promise-router")();
-const { verifyUser, verifyAuth } = require("../../midleware/authorization.midleware");
-const routers = require("../../util/util");
-const Product = require('../../services/product.service.js');
+import { Router } from 'express';
+import { verifyAuth, verifyUser } from "../../midleware/authorization.midleware.js";
+import { routers } from "../../util/util.js";
+import Product from '../../services/product.service.js';
 const product = new Product('products');
 
-
+const router = Router();
 
 router.get("/new_product", [verifyAuth, verifyUser], async (req, res, next) => {
     //render es para que muestre el form de crear productos
@@ -22,4 +22,5 @@ router.get("/products", [verifyAuth], async (req, res, next) => {
 router.get("/", (req, res, next) => {
     return res.status(200).json(routers);
 })
-module.exports = router;
+
+export default router;

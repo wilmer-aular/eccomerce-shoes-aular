@@ -1,8 +1,10 @@
-let router = require('express-promise-router')();
-let apiRouter = require('./api/api.js');
-let viewsRouter = require('./views/views.js');
+import { Router } from 'express';
+import apiRouter from './api/api.js';
+import viewsRouter from './views/views.js';
+
+const router = Router();
 
 router.use('/api', apiRouter);
 router.use('/', viewsRouter);
 
-module.exports = router;
+export default router;

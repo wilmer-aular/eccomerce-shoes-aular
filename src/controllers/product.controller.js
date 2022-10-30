@@ -1,4 +1,4 @@
-const Product = require('../services/product.service.js');
+import Product from '../services/product.service.js';
 const product = new Product('products');
 
 const getBody = ({ ...body }) => {
@@ -25,4 +25,4 @@ const productController = {
     },
 }
 
-module.exports = productController;
+export default productController;
