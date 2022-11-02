@@ -1,5 +1,4 @@
-import Product from '../services/product.service.js';
-const product = new Product('products');
+import product from '../daos/product.js';
 
 const getBody = ({ ...body }) => {
     delete body.page;

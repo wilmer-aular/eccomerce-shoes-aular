@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import { verifyAuth, verifyUser } from "../../midleware/authorization.midleware.js";
 import { routers } from "../../util/util.js";
-import Product from '../../services/product.service.js';
-const product = new Product('products');
+import product from '../../daos/product.js';
 
 const router = Router();
 

@@ -35,6 +35,18 @@ export const fromListString = (v) => {
   return '';
 };
 
+export const setError = (error) => {
+  console.error(error);
+  throw error;
+};
+
+export const setData = (doc) => {
+  return {
+    id: doc.id,
+    ...doc.data()
+  }
+}
+
 export const routers = {
   views: [
     { metod: 'get', uri: '/new_product' },

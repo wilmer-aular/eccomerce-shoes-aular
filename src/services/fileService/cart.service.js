@@ -1,6 +1,6 @@
 import Product from './product.service.js';
 import fs from 'fs';
-import { setProduct } from '../util/util.js';
+import { setProduct } from '../../util/util.js';
 
 const fsAsync = fs.promises;
 

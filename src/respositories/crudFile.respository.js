@@ -4,8 +4,9 @@ import { fromStringList, fromListString, createId } from '../util/util.js';
 
 const fsAsync = fs.promises;
 
-const error = { error: 'product not found' }
-class Product {
+const error = { error: 'record not found' };
+
+class CrudFile {
 
     constructor(fileName) {
         this.filName = fileName;
@@ -15,10 +16,10 @@ class Product {
         try {
             if (id) {
                 const data = await fsAsync.readFile(`./${this.filName}.txt`, 'utf-8');
-                const products = fromStringList(data);
-                const product = products.find(i => i.id == id);
-                if (!product) return { message: `${this.filName}  not found`, status: 404, error: true, id };
-                return product;
+                const list = fromStringList(data);
+                const find = list.find(i => i.id == id);
+                if (!find) return { message: `${this.filName}  not found`, status: 404, error: true, id };
+                return find;
             }
             const data = await fsAsync.readFile(`./${this.filName}.txt`, 'utf-8');
             return fromStringList(data);
@@ -41,13 +42,13 @@ class Product {
 
     async update(id, object) {
         try {
-            const products = await this.find();
-            const product = products.find(i => i.id == id);
-            if (!product) return { message: `${this.filName}  not found`, status: 404, error: true, id };
-            const updated = Object.assign(product, object);
+            const list = await this.find();
+            const value = list.find(i => i.id == id);
+            if (!value) return { message: `${this.filName}  not found`, status: 404, error: true, id };
+            const updated = Object.assign(value, object);
             await this.deleteById(id);
 
-            await fsAsync.appendFile(`./${this.filName}.txt`, `${products.length == 1 ? '' : ', '}${JSON.stringify({ ...updated, id })}`);
+            await fsAsync.appendFile(`./${this.filName}.txt`, `${list.length == 1 ? '' : ', '}${JSON.stringify({ ...updated, id })}`);
             return { success: true, update: id };
         } catch (error) {
             throw { message: 'Task error', status: 404, error };
@@ -62,8 +63,8 @@ class Product {
 
             if (!verifyExist) return { message: `${this.filName}  not found`, status: 404, error: true, id };
 
-            const products = list.filter(i => i.id != id);
-            const dataSave = fromListString(products);
+            const filtered = list.filter(i => i.id != id);
+            const dataSave = fromListString(filtered);
 
             await fsAsync.writeFile(`./${this.filName}.txt`, dataSave);
 
@@ -75,4 +76,4 @@ class Product {
 
 }
 
-export default Product;
+export default CrudFile;

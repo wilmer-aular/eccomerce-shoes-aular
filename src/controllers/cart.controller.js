@@ -1,5 +1,4 @@
-import Cart from '../services/cart.service.js';
-const cart = new Cart('carts');
+import cart from '../daos/cart.js'
 
 const cartController = {
     find: async (req, res) => {

@@ -1,10 +1,9 @@
-
-
 import express from 'express';
 import { Server as HTTPServer } from 'http';
 import { Server as SocketServer } from 'socket.io';
+import "./src/database/mongoConnection.js";;
 import handlebars from 'express-handlebars';
-
+import morgan from "morgan";
 import { routers } from "./src/util/util.js";
 
 import path from 'path';
@@ -21,7 +20,7 @@ import routerFacade from "./src/routers/fecade.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(morgan("dev"));
 
 app.engine("hbs", handlebars.engine({
   extname: ".hbs",
